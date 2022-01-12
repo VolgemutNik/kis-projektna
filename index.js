@@ -29,7 +29,7 @@ const twitterClient = new TwitterApi({
 });
 
 const port = process.env.PORT || 8080;
-const sleepInterval =process.env.SLEEP_INTERVAL|| 15000; //4 * 3600 * 1000; //x h * 3600 s * 1000 ms
+const sleepInterval = process.env.SLEEP_INTERVAL || 15000; //4 * 3600 * 1000; //x h * 3600 s * 1000 ms
 const minPercentChange = process.env.MIN_PERCENT_CHANGE || 20;
 let intervalId;
 
@@ -158,10 +158,10 @@ const main =
 
             for (const x of tweetable) {
                 const text = `GAINER ALERT:\n ${x.name} +${x.percentChange}%`;
-                try{
+                try {
                     const {data: createdTweet} = await twitterClient.v2.tweet(text);
                     logger.log("info", `Successfully tweeted: ${createdTweet.text}`);
-                }catch (e){
+                } catch (e) {
                     logger.log("error", `Error occured while tweeting: ${e}`);
                 }
 
